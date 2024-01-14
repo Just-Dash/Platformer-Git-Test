@@ -41,12 +41,21 @@ if place_meeting(x + x_mov, y + y_mov, obj_wall) {
 x += x_mov;
 y += y_mov;
 
-if key_shoot and can_shoot {
-	can_shoot = false;
+if key_shoot and can_attack {
+	can_attack = false;
 	alarm[0] = 15;
 	var _arrow = instance_create_depth(x, y, depth - 1, obj_arrow)
 	with _arrow {
 		x = other.x + other.image_xscale * (sprite_get_width(other.sprite_index) / 2 + sprite_width / 2);
 		dir = other.image_xscale;
+	}
+}
+
+if key_melee and can_attack {
+	can_attack = false;
+	alarm[0] = 15;
+	var _hitbox = instance_create_depth(x, y, depth, obj_melee_hitbox)
+	with _hitbox {
+		player = other
 	}
 }

@@ -1,5 +1,5 @@
-/// @desc
+/// @desc Attack Timer
 
-can_shoot = true
+can_attack = true
 
 
