@@ -1,5 +1,4 @@
 /// @desc
-
 scr_get_inputs()
 
 x_mov = (key_right - key_left) * spd
@@ -51,6 +50,7 @@ if key_shoot and can_attack {
 
 if key_melee and can_attack {
 	can_attack = false;
+	spd = 0
 	alarm[0] = 15;
 	var _hitbox = instance_create_depth(x, y, depth, obj_melee_hitbox)
 	with _hitbox {
