@@ -8,7 +8,6 @@ if x_mov != 0 {
 }
 
 grounded = place_meeting(x, y + 1, obj_wall);
-
 if grounded and key_jump {
 	y_mov = jmp
 }
@@ -28,7 +27,6 @@ if place_meeting(x, y + y_mov, obj_wall) {
 	}
 	y_mov = 0;
 }
-
 if place_meeting(x + x_mov, y + y_mov, obj_wall) {
 	while !place_meeting(x + sign(x_mov), y + sign(y_mov), obj_wall) {
 		x += sign(x_mov);

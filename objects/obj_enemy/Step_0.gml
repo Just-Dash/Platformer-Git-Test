@@ -1,8 +1,7 @@
 /// @desc
-
 x_mov = x_dir * spd;
-grounded = place_meeting(x, y + 1, obj_wall);
 
+grounded = place_meeting(x, y + 1, obj_wall);
 if grounded {
 	y_mov = 0
 }
