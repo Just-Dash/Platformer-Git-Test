@@ -3,6 +3,13 @@
 scr_get_inputs()
 
 x_mov = (key_right - key_left) * spd
+if sign(x_mov) == 1 {
+	image_xscale = 1
+}
+else if sign(x_mov) == -1 {
+	image_xscale = -1	
+}
+
 grounded = place_meeting(x, y + 1, obj_wall);
 
 if grounded and key_jump {
@@ -34,6 +41,9 @@ if place_meeting(x + x_mov, y + y_mov, obj_wall) {
 	y_mov = 0;
 }
 
-
 x += x_mov;
 y += y_mov;
+
+if key_shoot {
+	instance_create_depth(x, y, depth, obj_arrow, { dir : image_xscale });
+}

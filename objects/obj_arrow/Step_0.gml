@@ -1,0 +1,5 @@
+/// @desc
+
+x += dir * spd
+
+
