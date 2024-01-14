@@ -3,11 +3,8 @@
 scr_get_inputs()
 
 x_mov = (key_right - key_left) * spd
-if sign(x_mov) == 1 {
-	image_xscale = 1
-}
-else if sign(x_mov) == -1 {
-	image_xscale = -1	
+if x_mov != 0 {
+	image_xscale = sign(x_mov)
 }
 
 grounded = place_meeting(x, y + 1, obj_wall);
@@ -45,5 +42,9 @@ x += x_mov;
 y += y_mov;
 
 if key_shoot {
-	instance_create_depth(x, y, depth, obj_arrow, { dir : image_xscale });
+	var _arrow = instance_create_depth(x, y, depth - 1, obj_arrow)
+	with _arrow {
+		x = other.x + other.image_xscale * (sprite_get_width(other.sprite_index) / 2 + sprite_width / 2);
+		dir = other.image_xscale;
+	}
 }
