@@ -4,6 +4,7 @@ function scr_get_inputs(){
 	key_down = keyboard_check(ord("S")) or keyboard_check(vk_down);
 	key_right = keyboard_check(ord("D")) or keyboard_check(vk_right);
 	key_jump = keyboard_check_pressed(vk_space);
+	key_jump_released = keyboard_check_released(vk_space);
 	key_glide = keyboard_check(vk_space);
 	key_shoot = keyboard_check_pressed(ord("Z"));
 	key_melee = keyboard_check_pressed(ord("X"));

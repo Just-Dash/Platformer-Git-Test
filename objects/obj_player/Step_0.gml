@@ -1,17 +1,34 @@
 /// @desc
 scr_get_inputs()
 
-x_mov = (key_right - key_left) * spd
-if x_mov != 0 {
-	image_xscale = sign(x_mov)
-}
+x_mov = key_right - key_left
 
-grounded = place_meeting(x, y + 1, obj_wall);
+grounded = instance_place(x, y + 1, obj_wall);
 if grounded and key_jump {
 	y_mov = jmp
 }
 else {
 	y_mov += global.grv
+}
+
+if x_mov != 0 {
+	image_xscale = sign(x_mov)
+	if grounded
+		x_mov = spd + sign(x_mov) * grounded.frct
+	else
+		x_mov = spd + sign(x_mov) * global.frct
+}
+else {
+	if grounded
+		x_mov = spd - sign(spd) * grounded.frct
+	else
+		x_mov = spd - sign(spd) * global.frct
+	if sign(x_mov) != sign(spd)
+		x_mov = 0
+}
+
+if key_jump_released and sign(y_mov) < 0 {
+	y_mov = floor(y_mov / 2);
 }
 
 if place_meeting(x + x_mov, y, obj_wall) {
@@ -35,8 +52,12 @@ if place_meeting(x + x_mov, y + y_mov, obj_wall) {
 	y_mov = 0;
 }
 
-x += x_mov;
+
+spd = x_mov;
+spd = clamp(spd, -max_spd, max_spd);
+x += (spd > 0 ? ceil(spd) : floor(spd))
 y += y_mov;
+show_debug_message(spd)
 
 if key_shoot and can_attack {
 	can_attack = false;
