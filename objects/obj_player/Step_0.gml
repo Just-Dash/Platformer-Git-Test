@@ -52,12 +52,10 @@ if place_meeting(x + x_mov, y + y_mov, obj_wall) {
 	y_mov = 0;
 }
 
-
 spd = x_mov;
 spd = clamp(spd, -max_spd, max_spd);
 x += (spd > 0 ? ceil(spd) : floor(spd))
 y += y_mov;
-show_debug_message(spd)
 
 if key_shoot and can_attack {
 	can_attack = false;
