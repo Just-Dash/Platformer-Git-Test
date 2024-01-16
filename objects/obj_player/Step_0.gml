@@ -4,11 +4,26 @@ scr_get_inputs()
 x_mov = key_right - key_left
 
 grounded = instance_place(x, y + 1, obj_wall);
+if grounded {
+	has_glide = true
+}
 if grounded and key_jump {
 	y_mov = jmp
 }
+else if !grounded and key_jump and has_glide {
+	gliding = max_glide
+	has_glide = false
+}
 else {
 	y_mov += global.grv
+}
+
+if gliding > 0 and key_jump_released {
+	gliding = 0
+}
+else if gliding > 0 {
+	gliding--
+	y_mov = 1
 }
 
 if x_mov != 0 {

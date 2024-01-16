@@ -5,3 +5,5 @@ can_attack = true
 invincible = false
 image_speed = 0
 spd = 0
+has_glide = true
+gliding = 0
