@@ -41,6 +41,7 @@
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"obj_melee_hitbox","path":"objects/obj_melee_hitbox/obj_melee_hitbox.yy",},},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},},
+    {"id":{"name":"scr_round_out","path":"scripts/scr_round_out/scr_round_out.yy",},},
     {"id":{"name":"obj_arrow","path":"objects/obj_arrow/obj_arrow.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_melee_hitbox","path":"sprites/spr_melee_hitbox/spr_melee_hitbox.yy",},},
